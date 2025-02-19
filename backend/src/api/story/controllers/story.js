@@ -52,14 +52,12 @@ module.exports = createCoreController("api::story.story", ({ strapi }) => ({
           ? votes.reduce((sum, vote) => sum + vote.rating, 0) / totalVotes
           : 0;
 
-      // ✅ Esperar 5 segundos antes de actualizar readCount
       setTimeout(async () => {
         await strapi.entityService.update("api::story.story", id, {
           data: {
             readCount: (story.readCount || 0) + 1,
           },
         });
-        console.log(`🔹 readCount incrementado para story ID: ${id}`);
       }, 5000);
 
       return {
@@ -75,7 +73,6 @@ module.exports = createCoreController("api::story.story", ({ strapi }) => ({
         },
       };
     } catch (error) {
-      console.error("Error en findOne:", error);
       return ctx.internalServerError("Error interno al obtener la historia");
     }
   },

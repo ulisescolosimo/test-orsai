@@ -3,16 +3,14 @@
     <div v-if="story" class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-lg flex flex-col">
 
 
-      <!-- Contenido de la historia -->
       <div class="p-6">
         <h1 class="text-3xl font-bold text-gray-900 mb-3">{{ story.title }}</h1>
-        <p class="text-gray-600 text-sm mb-4">📖 Lecturas: {{ story.readCount }}</p>
+        <p class="text-gray-600 text-sm mb-4">📖 Lecturas: {{ story.readCount ?? 0 }}</p>
         <p class="text-gray-700 leading-relaxed">
           {{ story.content }}
         </p>
       </div>
 
-      <!-- Sección de estadísticas (Votos y Rating) -->
       <div class="bg-gray-50 px-6 py-3 flex justify-between items-center text-sm border-t">
         <div class="flex items-center text-blue-600">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,7 +49,6 @@ export default {
     const loadStory = async () => {
       story.value = await storyApi.getStoryById(storyId);
 
-      // ✅ Después de 6 segundos, recargar la historia para reflejar el nuevo readCount
       setTimeout(async () => {
         story.value = await storyApi.getStoryById(storyId);
       }, 6000);

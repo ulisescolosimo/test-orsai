@@ -41,14 +41,4 @@ export default {
       return null;
     }
   },
-  async incrementReadCount(id) {
-    try {
-      await axios.put(`http://localhost:1337/api/stories/${id}/increment-read`);
-    } catch (error) {
-      console.error(
-        `Error al incrementar readCount para la historia ${id}:`,
-        error
-      );
-    }
-  },
 };
