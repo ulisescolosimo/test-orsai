@@ -22,8 +22,8 @@
         <div class="bg-gray-50 px-4 pb-4 mt-auto flex justify-between items-center text-sm">
           <!-- Botón "Leer más" alineado a la izquierda -->
           <div>
-            <router-link :to="`/stories/${story.id}`"
-              class="bg-black text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-blue-700">
+            <router-link :to="`/stories/${story.id}`" class="bg-black text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300 hover:bg-[#1E2939]
+">
               Leer más
             </router-link>
           </div>
